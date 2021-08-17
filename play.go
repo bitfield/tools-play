@@ -1,10 +1,9 @@
 package play
 
-import "errors"
+import (
+	"strings"
+)
 
-func Publish(args []string) (string, error) {
-	if len(args) == 0 {
-		return "", errors.New("no args")
-	}
-	return args[0], nil
+func Publish(args []string) string {
+	return strings.Join(args, " ")
 }
