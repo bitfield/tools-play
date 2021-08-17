@@ -20,3 +20,4 @@ func TestPublish(t *testing.T) {
 		t.Fatal(cmp.Diff(want, got))
 	}
 }
+
