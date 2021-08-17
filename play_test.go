@@ -12,7 +12,7 @@ func TestPublish(t *testing.T) {
 	input := []string{"/usr/bin/play", "a", "b", "c"}
 	want := "a"
 	var got string
-	got, err := play.Publish(input)
+	got, err := play.Publish(input[1:])
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -21,10 +21,10 @@ func TestPublish(t *testing.T) {
 	}
 }
 
-func TestPublishWithNoArgsDoesNotPanic(t *testing.T) {
+func TestPublishWithNoArgsReturnsError(t *testing.T) {
 	t.Parallel()
 	_, err := play.Publish([]string{})
 	if err == nil {
-		t.Fatal("want error for zero args")
+		t.Fatal("want error for zero args, but got nil")
 	}
 }

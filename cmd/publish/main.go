@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	result, err := play.Publish(os.Args)
+	result, err := play.Publish(os.Args[1:])
 	if err != nil {
 		log.Fatal(err)
 	}
