@@ -9,7 +9,7 @@ import (
 
 func TestPublish(t *testing.T) {
 	t.Parallel()
-	input := []string{"a", "b", "c"}
+	input := []string{"/usr/bin/play", "a", "b", "c"}
 	want := "a"
 	var got string
 	got, err := play.Publish(input)

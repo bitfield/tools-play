@@ -1,6 +1,5 @@
 package play
 
 func Publish(args []string) (string, error) {
-	// fmt.Println(args)
-	return "", nil
+	return args[1], nil
 }
