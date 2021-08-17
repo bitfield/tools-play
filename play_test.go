@@ -21,3 +21,10 @@ func TestPublish(t *testing.T) {
 	}
 }
 
+func TestPublishWithNoArgsDoesNotPanic(t *testing.T) {
+	t.Parallel()
+	_, err := play.Publish([]string{})
+	if err == nil {
+		t.Fatal("want error for zero args")
+	}
+}
