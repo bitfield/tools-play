@@ -7,19 +7,6 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestPublish(t *testing.T) {
-	t.Parallel()
-	p, err := play.NewPublisherFromArgs([]string{"hello", "world"})
-	if err != nil {
-		t.Fatal(err)
-	}
-	want := "hello world"
-	got := p.Publish()
-	if !cmp.Equal(want, got) {
-		t.Fatal(cmp.Diff(want, got))
-	}
-}
-
 func TestPublishWithNoArgsReturnsEmptyString(t *testing.T) {
 	t.Parallel()
 	want := ""
@@ -38,6 +25,19 @@ func TestNewPublisherFromArgs(t *testing.T) {
 	_, err := play.NewPublisherFromArgs([]string{"hello", "world"})
 	if err != nil {
 		t.Fatal(err)
+	}
+}
+
+func TestPublishWithoutAllCaps(t *testing.T) {
+	t.Parallel()
+	p, err := play.NewPublisherFromArgs([]string{"hello", "World"})
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := "hello World"
+	got := p.Publish()
+	if !cmp.Equal(want, got) {
+		t.Fatal(cmp.Diff(want, got))
 	}
 }
 

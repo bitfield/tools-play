@@ -2,11 +2,15 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"play"
 )
 
 func main() {
-	result := play.Publish(os.Args[1:])
-	fmt.Println(result)
+	p, err := play.NewPublisherFromArgs(os.Args[1:])
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(p.Publish())
 }
